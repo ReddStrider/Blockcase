@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
+        <style>
+            html,
+            body {
+                margin: 0;
+                font-smooth: never;
+            }
+
+            html {
+                background-image: url("assets/Command Room.png");
+                background-attachment: fixed;
+                font-family: 'Monocraft', 'Courier New', Verdana, sans-serif;
+            }
+
+            body {
+                image-rendering: pixelated;
+            }
+
+            #commandHolder {
+                display: flexbox;
+            }
+
+            #topMenu {
+                margin-bottom: 80px;
+                color: white;
+                text-align: center;
+            }
+
+            #importMenu {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
+
+            input[type="file"] {
+                opacity: 0;
+            }
+
+            .file-input-wrapper {
+                position: relative;
+                width: 200px;
+                /* Adjust the width as needed */
+            }
+
+            .file-input-background {
+                opacity: 1;
+                font-family: 'Monocraft', 'Courier New', Verdana, sans-serif;
+                background-image: url("assets/buttons/BG.png");
+                background-size: 500px;
+                image-rendering: pixelated;
+                border-style: solid;
+                border-color: transparent;
+                outline: 4px solid black;
+                color: white;
+                font-size: 2em;
+                margin-bottom: 30px;
+            }
+
+
+            h1 {
+                font-size: 4em;
+                letter-spacing: 10px;
+                font-family: 'Pixel Title', 'Courier New', Verdana, sans-serif;
+                font-smooth: never;
+                text-shadow: 4px 4px 0px #2c2c2c;
+            }
+
+            #command-name {
+                background-color: transparent;
+                outline: none;
+                border: none;
+                font-family: 'Pixel Title', 'Courier New', Verdana, sans-serif;
+                text-shadow: 4px 4px 0px #2c2c2c;
+                font-size: 3em;
+                color: white;
+
+            }
+
+            .panel-container {
+                background-color: rgba(169, 170, 170, 0.4);
+                box-shadow: inset 0px 0px 169px 19px rgba(233, 242, 245, 0.322);
+                backdrop-filter: blur(2px);
+                margin-bottom: 20px;
+                padding: 10px;
+            }
+
+            .panel-buttonimg {
+                image-rendering: pixelated;
+                width: 64px;
+            }
+
+            .box {
+                box-shadow: -2px -2px 0px 2px black, 2px 2px 0px 2px white, 0px 0px 0px 4px #8b8b8b, 0 0 0px 10px #c6c6c6, 0 0 0px 14px black;
+                background-color: #373737;
+                border-radius: 0px;
+                border-color: transparent;
+                color: whitesmoke;
+                padding: 8px;
+                margin: 16px;
+                font-size: 16px;
+                font-family: 'Monocraft', 'Courier New', Verdana, sans-serif;
+                font-smooth: never;
+                line-height: 1.5em;
+                white-space: nowrap;
+            }
+
+            .nowrap{
+                white-space: nowrap;
+            }
+
+            @font-face {
+                font-family: 'Pixel Title';
+                src: url('fonts/Retro\ Gaming.ttf') format('truetype');
+                font-smooth: never;
+            }
+
+            @font-face {
+                font-family: 'Monocraft';
+                src: url('fonts/Monocraft.ttf') format('truetype');
+                font-smooth: never;
+            }
+
+            button {
+                font-family: 'Monocraft', 'Courier New', Verdana, sans-serif;
+                background-image: url("assets/buttons/BG.png");
+                background-size: 500px;
+                image-rendering: pixelated;
+                border-style: solid;
+                border: none;
+                border-color: transparent;
+                outline: 4px solid black;
+                color: white;
+                font-size: 1.5em;
+                text-shadow: 3px 3px 0px #2c2c2c;
+                margin-bottom: 30px;
+                padding-bottom: 12px;
+                padding-top: 8px;
+                text-align: center;
+                box-shadow: inset -2px -8px 0px 0px rgba(10, 10, 10, 0.541), inset 2px 2px 0px 0px rgba(255, 255, 255, 0.61);
+            }
+
+            button:hover {
+                background-image: url("assets/buttons/BGSel.png");
+                padding-bottom: 10px;
+                box-shadow: inset -2px -6px 0px 0px rgba(10, 10, 10, 0.541), inset 2px 2px 0px 0px rgba(255, 255, 255, 0.61);
+                transform: translate(0px, 2px);
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="topMenu">
+            <h1>Blockcase: The command combiner</h1>
+            <input value="" placeholder="Enter name here" aria-disabled="false" type="text" id="command-name">
+        </div>
+        <!-- <div id="importMenu">
+            <label class="file-input-wrapper">
+                <input type="file" accept=".json" id="IMPORT">
+                <div class="file-input-background">SELECT</div>
+            </label>
+            <button class="button" onclick="loadJSONFromFile()">Paste</button>
+        </div> -->
+        <div id="commandHolder"></div>
+        <script src="one-command.js"></script>
+        <button onclick="clipboardChain()"><img src="assets/button icons/clipboard.png" /> Copy Command</button>
+        <button onclick="addScriptPanel()"><img src="assets/button icons/plus-command.png" /> New Script</button>
+        <button onclick="removeScriptPanel()"><img src="assets/button icons/trash.png" />Erase Script</button>
+        <button class="button" onclick="copyJSON()"><img src="assets/button icons/export-json.png" />Copy JSON</button>
+        <button class="button" onclick="copyLink()"><img src="assets/button icons/clipboard-link.png" />Copy/Update Link</button>
+
+        <!-- <button class="button" onclick="downloadJSON()">Download JSON</button> -->
+
+
+
+    </body>
+
+</html>
