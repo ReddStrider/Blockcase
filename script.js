@@ -102,7 +102,7 @@ class CommandBlock {
     }
     toCommandForm(x, y, z) {
         console.log(this.blockType("impulse"))
-        return ('setblock ~' + x + ' ~' + y + ' ~' + z + ' ' + this.blockType(this.type) + '[facing=' + this.facing + ']{auto:' + this.toBool(this.auto) + ', Command: \\"' + this.command.replace(/\\/g, "\\\\").replace(/"/g, '\\\"') + '\\" }');
+        return ('setblock ~' + x + ' ~' + y + ' ~' + z + ' ' + this.blockType(this.type) + '[facing=' + this.facing + ']{auto:' + this.toBool(this.auto) + ', Command: \\"' + this.command.replace(/\\/g, '\\\\\\\\').replace(/"/g, '\\\\\\"') + '\\" }');
 
     }
     toBool(b) {
@@ -385,9 +385,21 @@ if (linkName != null) {
 document.addEventListener("DOMContentLoaded", () => {
     const buttons = document.querySelectorAll('button');
     buttons.forEach(button => {
-      button.addEventListener("mouseover", (event) => {
-        var butttonHover = new Audio('sounds/focus.wav');
-        playAudio(butttonHover);
-      });
+        button.addEventListener("mouseover", (event) => {
+            var butttonHover = new Audio('sounds/focus.wav');
+            playAudio(butttonHover);
+        });
     });
-  });
+});
+
+
+// var settingsIcon = document.getElementById('settings');
+// settingsIcon.addEventListener("click", (event) => {
+//     playAudio(press);
+// });
+
+var settingsIcon = document.getElementById('info');
+settingsIcon.addEventListener("click", (event) => {
+    playAudio(press);
+    window.open("info.html", "Popup", "width=1280,height=768");
+});
