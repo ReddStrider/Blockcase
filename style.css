@@ -84,9 +84,12 @@ h1 {
     outline: none;
     border: none;
     font-family: 'Pixel Title', 'Courier New', Verdana, sans-serif;
-    text-shadow: 4px 4px 0px #2c2c2c;
     font-size: 3em;
     color: white;
+    text-decoration: underline dashed;
+    text-decoration-skip: spaces;
+    text-decoration-skip-ink: auto;
+    text-shadow: 4px 4px 0px #2c2c2c;
 
 }
 
@@ -147,6 +150,7 @@ button {
     font-size: 1.5em;
     text-shadow: 3px 3px 0px #3e3e3e;
     margin-bottom: 30px;
+    margin-left: 10px;
     padding-bottom: 12px;
     padding-top: 8px;
     text-align: center;
