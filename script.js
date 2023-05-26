@@ -102,7 +102,7 @@ class CommandBlock {
     }
     toCommandForm(x, y, z) {
         console.log(this.blockType("impulse"))
-        return ('setblock ~' + x + ' ~' + y + ' ~' + z + ' ' + this.blockType(this.type) + '[facing=' + this.facing + ']{auto:' + this.toBool(this.auto) + ', Command: \\"' + this.command + '\\" }');
+        return ('setblock ~' + x + ' ~' + y + ' ~' + z + ' ' + this.blockType(this.type) + '[facing=' + this.facing + ']{auto:' + this.toBool(this.auto) + ', Command: \\"' + this.command.replace(/\\/g, "\\\\").replace(/"/g, '\\\"') + '\\" }');
 
     }
     toBool(b) {
@@ -218,9 +218,9 @@ function copyChain() {
     for (let i = 0; i < panelsData.length; i++) {
         let chainCommands = textareaToArray(panelsData[i].panel)
         let chainBlocks = []
-        chainBlocks.push(new CommandBlock(chainCommands[0].replace(/\\/g, "\\\\").replace(/"/g, '\\\"'), panelsData[i].start, true, false, "up", false))
+        chainBlocks.push(new CommandBlock(chainCommands[0], panelsData[i].start, true, false, "up", false))
         for (let ii = 1; ii < chainCommands.length; ii++) {
-            chainBlocks.push(new CommandBlock(chainCommands[ii].replace(/\\/g, "\\\\").replace(/"/g, '\\\"'), panelsData[i].trail, true, false, "up", false))
+            chainBlocks.push(new CommandBlock(chainCommands[ii], panelsData[i].trail, true, false, "up", false))
         }
         commmandChains.push(new Machine(chainBlocks))
     }
@@ -246,7 +246,7 @@ function buildMachine(m) {
     machineOutput = 'summon falling_block ~ ~1 ~ {BlockState:{Name:"minecraft:activator_rail"},Time:1'
     let machineBlockCount = 0;
 
-    if (true) {
+    if (false) {
         machineBlockCount += 3;
         machineOutput += ',Passengers:[{id:"minecraft:command_block_minecart",Command:"fill ~' + (m.length - 3) + ' ~-1 ~2 ~2 ~' + (machineHeight(m)) + ' ~4 minecraft:light_blue_stained_glass outline"'
         machineOutput += ',Passengers:[{id:"minecraft:command_block_minecart",Command:"fill ~' + (m.length - 3) + ' ~-1 ~2 ~2 ~-1 ~4 minecraft:polished_andesite"'
@@ -353,8 +353,8 @@ function downloadJSON() {
 
 async function copyLink() {
     newURL = setURLParameter(setURLParameter(window.location.href, 'src', fixParameters(JSON.stringify(exportJSON()))), 'name', document.getElementById('command-name').value);
-    await navigator.clipboard.writeText(JSON.stringify(newURL));
-    await playAudio(press)
+    //await navigator.clipboard.writeText(JSON.stringify(newURL));
+    //playAudio(press)
     window.location.href = newURL;
 }
 
