@@ -303,9 +303,12 @@ function loadCommandJSON(json) {
     }
 }
 
+let JSONString = '';
+
 function copyJSON() {
     copyChain()
-    navigator.clipboard.writeText(JSON.stringify(commmandChains))
+    JSONString = JSON.stringify(commmandChains)
+    navigator.clipboard.writeText(JSONString)
     playAudio(press)
 }
 

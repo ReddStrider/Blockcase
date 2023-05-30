@@ -8,21 +8,21 @@ html {
     background-image: url("assets/Command Room.png");
     background-attachment: fixed;
     font-family: 'Monocraft', 'Courier New', Verdana, sans-serif;
-    overflow-x:hidden
+    overflow-x: hidden
 }
 
 body {
     image-rendering: pixelated;
 }
 
-#settings{
+#settings {
     width: 64px;
     position: absolute;
     top: 10px;
     left: calc(100vw - 128px - 20px);
 }
 
-#info{
+#info {
     width: 64px;
     position: absolute;
     top: 10px;
@@ -164,25 +164,49 @@ button:hover {
     transform: translate(0px, 2px);
 }
 
+#json-input {
+    display: flex;
+    position: fixed;
+    text-align: center;
+    top: 20vh;
+    left: 10vw;
+    width: 80vw;
+    height: 60vh;
+    z-index: 10;
+    background-color: rgba(240, 248, 255, 0.404);
+}
+
+#json-input textarea{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    width: 90%;
+    height: 70%;
+
+}
+#json-input h1{
+    margin-top: 0%;
+}
+
 
 /* ===== Scrollbar CSS ===== */
-  /* Firefox */
-  * {
+/* Firefox */
+* {
     scrollbar-width: auto;
     scrollbar-color: #c0c0c0 #000000;
-  }
+}
 
-  /* Chrome, Edge, and Safari */
-  *::-webkit-scrollbar {
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
     width: 24px;
-  }
+}
 
-  *::-webkit-scrollbar-track {
+*::-webkit-scrollbar-track {
     background: #000000;
-  }
+}
 
-  *::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
     background-color: #c0c0c0;
     border-radius: 0px;
     border: 4px solid #808080;
-  }
+}
