@@ -4,12 +4,13 @@
     <head>
         <link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="toastcraft/style.css">
     </head>
 
     <body>
         <!-- <img src="assets/button icons/gear.png" id="settings"/> -->
 
-        <img src="assets/button icons/question-mark.png" id="info"/>
+        <img src="assets/button icons/question-mark.png" id="info" />
 
         <div id="topMenu">
             <h1>Blockcase: The command combiner</h1>
@@ -23,22 +24,33 @@
             <button class="button" onclick="loadJSONFromFile()">Paste</button>
         </div> -->
         <button onclick="clipboardChain()"><img src="assets/button icons/clipboard.png" /> Copy Command</button>
-        <button class="button" onclick="copyLink()"><img src="assets/button icons/clipboard-link.png" />Update Link</button>
+        <button class="button" onclick="copyLink()"><img src="assets/button icons/clipboard-link.png" />Update
+            Link</button>
         <div id="commandHolder"></div>
         <script src="script.js"></script>
-        <div id="json-input">
-            <h1>Please input JSON</h1>
-            <br />
-            <textarea>waht</textarea>
+        <script src="toastcraft/script.js"></script>
+        <div id="json-input-holder" style="display:none">
+            <div id="json-input">
+                <h1 id="json-input-text">Please input JSON</h1>
+                <textarea id="jsonText">[{"blocks":[{"command":"/say Hello there!  (General Kenobi?)","type":"impulse","auto":true,"conditional":false,"facing":"up","looping":false},{"command":"/say It seems it you're seeing this you forgot to load the JSON","type":"chain","auto":true,"conditional":false,"facing":"up","looping":false},{"command":"/say Or there's a bug.","type":"chain","auto":true,"conditional":false,"facing":"up","looping":false}]}]</textarea>
+                <div id="json-input-buttons">
+                    <button onclick="loadJSONInput()">Load em</button>
+                    <div style="margin-left: 40px;"></div>
+                    <button onclick="closeJSONInput()">Cancel</button>
+                </div>
+
+            </div>
         </div>
+
         <button onclick="addScriptPanel()"><img src="assets/button icons/plus-command.png" /> New Script</button>
         <button onclick="removeScriptPanel()"><img src="assets/button icons/trash.png" />Erase Script</button>
         <button class="button" onclick="copyJSON()"><img src="assets/button icons/export-json.png" />Copy JSON</button>
-        <button class="button" onclick="loadJSON()"><img src="assets/button icons/import-json.png" />Load JSON</button>
+        <button class="button" onclick="openJSONInput()"><img src="assets/button icons/import-json.png" />Load
+            JSON</button>
 
 
         <!-- <button class="button" onclick="downloadJSON()">Download JSON</button> -->
-        
+
 
 
     </body>

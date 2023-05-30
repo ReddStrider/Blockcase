@@ -168,6 +168,10 @@ function addScriptPanel() {
     // // outputCommand += "}"
     // console.log(m.toSingleStack());
     playAudio(craft);
+    localStorage.setItem("createdScript", localStorage.getItem("createdScript")+1);
+    if(localStorage.getItem("createdScript") == 10){
+        displayToast('Achivement get!','Scripter: Create 10 scripts','bread.png');
+    }
 }
 
 function addDataScriptPanel(textareainside, starttype, trailtype) {
@@ -276,7 +280,7 @@ function textareaToArray(t) {
 }
 
 
-const testJSON = JSON.parse('[{"blocks":[{"command":"/summon pig ~5 ~ ~","type":"impulse","auto":true,"conditional":false,"facing":"up","looping":false},{"command":"/say mm bacon","type":"repeating","auto":true,"conditional":false,"facing":"up","looping":false}]},{"blocks":[{"command":"/say e","type":"repeating","auto":true,"conditional":false,"facing":"up","looping":false},{"command":"/say a","type":"chain","auto":true,"conditional":false,"facing":"up","looping":false},{"command":"/say sports","type":"chain","auto":true,"conditional":false,"facing":"up","looping":false},{"command":"/say its in the game","type":"chain","auto":true,"conditional":false,"facing":"up","looping":false}]},{"blocks":[{"command":"/say AAAAA","type":"repeating","auto":true,"conditional":false,"facing":"up","looping":false}]}]');
+const testJSON = JSON.parse('[{"blocks":[{"command":"susssss","type":"impulse","auto":true,"conditional":false,"facing":"up","looping":false}]}]');
 
 function loadCommandJSON(json) {
     commandHolder.innerHTML = ''
@@ -310,6 +314,7 @@ function copyJSON() {
     JSONString = JSON.stringify(commmandChains)
     navigator.clipboard.writeText(JSONString)
     playAudio(press)
+    displayToast('JSON copied', 'paste it into a document to save it', 'excamation.png');
 }
 
 
@@ -365,6 +370,41 @@ function fixParameters(p) {
     return p.replace(/&/g, '%26').replace(/#/g, '%23').replace(/\+/g, '%2B').replace(/  /g, '%20');
 }
 
+
+
+function openJSONInput() {
+    document.getElementById('json-input-holder').style = '';
+    playAudio(press);
+}
+
+function closeJSONInput() {
+    document.getElementById('json-input-holder').style = 'display:none;';
+    playAudio(back);
+    if(!localStorage.getItem("pressedCancel")){
+        localStorage.setItem("pressedCancel", true);
+        displayToast('Achivement get!','Nevermind... Cancel a JSON load','bread.png');
+    }
+}
+
+function loadJSONInput() {
+    try {
+        loadCommandJSON(JSON.parse(document.getElementById('jsonText').value));
+        closeJSONInput();
+        displayToast('JSON loaded', 'Happy commanding!', 'excamation.png');
+    }
+    catch (err) {
+        displayToast('Error in JSON', err, 'excamation.png');
+    }
+
+}
+
+
+
+
+
+
+
+
 var wrapping = false;
 
 
@@ -405,4 +445,8 @@ var settingsIcon = document.getElementById('info');
 settingsIcon.addEventListener("click", (event) => {
     playAudio(press);
     window.open("info.html", "Popup", "width=1280,height=768");
+    if(!localStorage.getItem("pressedInfo")){
+        localStorage.setItem("pressedInfo", true);
+        displayToast('Achivement get!','Inspector: Press the info button.','bread.png');
+    }
 });

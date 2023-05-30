@@ -1,0 +1,51 @@
+.toast-message {
+    color: white;
+    background-color: #212121;
+    box-shadow: inset 0px 0px 0px 3px #555555;
+    border: black solid 4px;
+    z-index: 100;
+    font-family: 'minecraft-reg';
+    width: 320px;
+    height: 64px;
+    display: flex;
+    image-rendering: pixelated;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: calc(100vw - 320px - 7px);
+    top:0px;
+    transform: translate(0%, 0%);
+    transition-duration: .5s;
+    transition-timing-function: ease-out;
+}
+
+.toast-out{
+    transform: translate(100%, 0%);
+}
+
+.toast-text {
+    display: inline;
+}
+.toast-text p{
+    margin-bottom: 4px;
+    margin-top: 4px;
+}
+
+.toast-title {
+    color: yellow;
+}
+
+.toast-message img {
+    height: 32px;
+    margin-left: 8px;
+    margin-right: 12px;
+}
+
+
+/* https://github.com/IdreesInc/Minecraft-Font/blob/main/Minecraft.otf */
+@font-face {
+    font-family: 'minecraft-reg';
+    src: url('minecraft.otf') format('opentype');
+    font-smooth: never;
+    font-size: 2em;
+}
