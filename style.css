@@ -123,11 +123,11 @@ h1 {
     font-family: 'Monocraft', 'Courier New', Verdana, sans-serif;
     font-smooth: never;
     line-height: 1.5em;
-    white-space: nowrap;
+    white-space: pre;
 }
 
 .nowrap {
-    white-space: nowrap;
+    white-space: pre;
 }
 
 @font-face {
@@ -227,7 +227,7 @@ button:hover {
     font-family: 'Monocraft', 'Courier New', Verdana, sans-serif;
     font-smooth: never;
     line-height: 1.5em;
-    white-space: nowrap;
+    white-space: pre;
 }
 
 /* ===== Scrollbar CSS ===== */
