@@ -397,7 +397,7 @@ function loadJSONInput() {
         displayToast('JSON loaded', 'Happy commanding!', 'excamation.png');
     }
     catch (err) {
-        displayToast('Error in JSON', err, 'excamation.png');
+        displayToast('Error in JSON', err, 'excamation red.png');
     }
 
 }
