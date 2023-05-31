@@ -205,6 +205,10 @@ function addDataScriptPanel(textareainside, starttype, trailtype) {
 }
 
 function removeScriptPanel() {
+    if(!localStorage.getItem("erasedNothing") && panelsData.length<=0){
+        localStorage.setItem("erasedNothing", true);
+        displayToast('Achivement get!','Destroyer: Press the delete button with nothing there.','bread.png');
+    }
     commandHolder.removeChild(panelsData[panelsData.length - 1].container)
     panelsData.pop()
     playAudio(craftfail);
@@ -445,8 +449,8 @@ var settingsIcon = document.getElementById('info');
 settingsIcon.addEventListener("click", (event) => {
     playAudio(press);
     window.open("info.html", "Popup", "width=1280,height=768");
-    if(!localStorage.getItem("pressedInfo")){
-        localStorage.setItem("pressedInfo", true);
-        displayToast('Achivement get!','Inspector: Press the info button.','bread.png');
+    if(!localStorage.getItem("viewedInfo")){
+        localStorage.setItem("viewedInfo", true);
+        displayToast('Achivement get!','Inspector Gadget: Press the info button.','bread.png');
     }
 });
