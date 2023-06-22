@@ -165,7 +165,6 @@ button {
 
 button:hover {
     background-image: url("assets/buttons/BGSel.png");
-    margin-top: 2px;
     padding-bottom: 10px;
     box-shadow: inset -2px -6px 0px 0px rgba(10, 10, 10, 0.541), inset 2px 2px 0px 0px rgba(255, 255, 255, 0.61);
     transform: translate(0px, 2px);
