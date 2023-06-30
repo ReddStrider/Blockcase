@@ -2,9 +2,19 @@
 <html>
 
     <head>
+        <title>Blockcase</title>
         <link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="toastcraft/style.css">
+
+        <meta property="og:title" content="Blockcase" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image"
+            content="https://w7.pngwing.com/pngs/849/691/png-transparent-cute-frog-cartoon-01-thumbnail.png" />
+        <meta property="og:description" content="The command combiner" />
+        <meta http-equiv="cache-control" content="no-cache" />
+        <meta name="theme-color" content="#3ac290">
+        <meta name="twitter:card" content="summary_large_image">
     </head>
 
     <body>
@@ -32,7 +42,8 @@
         <div id="json-input-holder" style="display:none">
             <div id="json-input">
                 <h1 id="json-input-text">Please input JSON</h1>
-                <textarea id="jsonText">[{"blocks":[{"command":"/say Hello there!  (General Kenobi?)","type":"impulse","auto":true,"conditional":false,"facing":"up","looping":false},{"command":"/say It seems it you're seeing this you forgot to load the JSON","type":"chain","auto":true,"conditional":false,"facing":"up","looping":false},{"command":"/say Or there's a bug.","type":"chain","auto":true,"conditional":false,"facing":"up","looping":false}]}]</textarea>
+                <textarea
+                    id="jsonText">[{"blocks":[{"command":"/say Hello there!  (General Kenobi?)","type":"impulse","auto":true,"conditional":false,"facing":"up","looping":false},{"command":"/say It seems it you're seeing this you forgot to load the JSON","type":"chain","auto":true,"conditional":false,"facing":"up","looping":false},{"command":"/say Or there's a bug.","type":"chain","auto":true,"conditional":false,"facing":"up","looping":false}]}]</textarea>
                 <div id="json-input-buttons">
                     <button onclick="loadJSONInput()">Load em</button>
                     <div style="margin-left: 40px;"></div>
