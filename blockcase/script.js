@@ -168,9 +168,9 @@ function addScriptPanel() {
     // // outputCommand += "}"
     // console.log(m.toSingleStack());
     playAudio(craft);
-    localStorage.setItem("createdScript", localStorage.getItem("createdScript")+1);
-    if(localStorage.getItem("createdScript") == 10){
-        displayToast('Achivement get!','Scripter: Create 10 scripts','bread.png');
+    localStorage.setItem("createdScript", localStorage.getItem("createdScript") + 1);
+    if (localStorage.getItem("createdScript") == 10) {
+        displayToast('Achivement get!', 'Scripter: Create 10 scripts', 'bread.png');
     }
 }
 
@@ -205,9 +205,9 @@ function addDataScriptPanel(textareainside, starttype, trailtype) {
 }
 
 function removeScriptPanel() {
-    if(!localStorage.getItem("erasedNothing") && panelsData.length<=0){
+    if (!localStorage.getItem("erasedNothing") && panelsData.length <= 0) {
         localStorage.setItem("erasedNothing", true);
-        displayToast('Achivement get!','Destroyer: Press the delete button with nothing there.','bread.png');
+        displayToast('Achivement get!', 'Destroyer: Press the delete button with nothing there.', 'bread.png');
     }
     commandHolder.removeChild(panelsData[panelsData.length - 1].container)
     panelsData.pop()
@@ -254,19 +254,25 @@ function buildMachine(m) {
     machineOutput = 'summon falling_block ~ ~1 ~ {BlockState:{Name:"minecraft:activator_rail"},Time:1'
     let machineBlockCount = 0;
 
-    if (false) {
-        machineBlockCount += 3;
-        machineOutput += ',Passengers:[{id:"minecraft:command_block_minecart",Command:"fill ~' + (m.length - 3) + ' ~-1 ~2 ~2 ~' + (machineHeight(m)) + ' ~4 minecraft:light_blue_stained_glass outline"'
-        machineOutput += ',Passengers:[{id:"minecraft:command_block_minecart",Command:"fill ~' + (m.length - 3) + ' ~-1 ~2 ~2 ~-1 ~4 minecraft:polished_andesite"'
-        machineOutput += ',Passengers:[{id:"minecraft:command_block_minecart",Command:"/setblock ~ ~ ~1 minecraft:warped_wall_sign{Text1:\'{\\"text\\":\\"Built with\\"}\',Text2:\'{\\"text\\":\\"blockcase v-beta0.8\\"}\'} replace"'
-    }
-
     for (let ii = 0; ii < m.length; ii++) {
         for (let i = 0; i < m[ii].blocks.length; i++) {
             //console.log(m[ii].blocks)
             machineBlockCount++;
             machineOutput += ',Passengers:[{id:"minecraft:command_block_minecart",Command:"' + m[ii].blocks[i].toCommandForm(ii, i, 3) + '"'
         }
+    }
+
+    if (true) {
+        machineBlockCount += 3;
+        //machineOutput += ',Passengers:[{id:"minecraft:command_block_minecart",Command:"say ' + (m.length + 2) + '"'
+        machineOutput += ',Passengers:[{id:"minecraft:command_block_minecart",Command:"fill ~' + (m.length) + ' ~-1 ~2 ~-1 ~' + (machineHeight(m)) + ' ~4 minecraft:orange_stained_glass outline"'
+        machineOutput += ',Passengers:[{id:"minecraft:command_block_minecart",Command:"fill ~' + (m.length) + ' ~-1 ~2 ~-1 ~-1 ~4 minecraft:white_terracotta"'
+        machineOutput += ',Passengers:[{id:"minecraft:command_block_minecart",Command:"setblock ~ ~ ~1 bamboo_wall_sign{front_text:{has_glowing_text:1b,messages:[\'{\\"text\\":\\"\\"}\',\'{\\"text\\":\\"'+document.getElementById('command-name').value+'\\",\\"color\\":\\"gold\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"'+document.getElementById('command-clickEvent').value+'\\"}}\',\'{\\"text\\":\\"\\"}\',\'{\\"text\\":\\"MW Blockcase\\"}\']}}"'
+
+
+        //machineOutput += ',Passengers:[{id:"minecraft:command_block_minecart",Command:"fill ~' + (m.length - 3) + ' ~-1 ~2 ~2 ~' + (machineHeight(m)) + ' ~4 minecraft:light_blue_stained_glass outline"'
+        //machineOutput += ',Passengers:[{id:"minecraft:command_block_minecart",Command:"fill ~' + (m.length - 3) + ' ~-1 ~2 ~2 ~-1 ~4 minecraft:polished_andesite"'
+        //machineOutput += ',Passengers:[{id:"minecraft:command_block_minecart",Command:"/setblock ~ ~ ~1 minecraft:warped_wall_sign{Text1:\'{\\"text\\":\\"Built with\\"}\',Text2:\'{\\"text\\":\\"blockcase v-beta0.8\\"}\'} replace"'
     }
 
     machineOutput += ",Passengers:[{id:\"minecraft:command_block_minecart\",Command:\"kill @e[distance=..2,type=minecraft:command_block_minecart]\"";
@@ -364,7 +370,7 @@ function downloadJSON() {
 }
 
 async function copyLink() {
-    newURL = setURLParameter(setURLParameter(window.location.href, 'src', fixParameters(JSON.stringify(exportJSON()))), 'name', document.getElementById('command-name').value);
+    newURL = setURLParameter(setURLParameter(setURLParameter(window.location.href, 'src', fixParameters(JSON.stringify(exportJSON()))), 'name', document.getElementById('command-name').value), 'clickEvent', fixParameters(document.getElementById('command-clickEvent').value));
     //await navigator.clipboard.writeText(JSON.stringify(newURL));
     //playAudio(press)
     window.location.href = newURL;
@@ -384,9 +390,9 @@ function openJSONInput() {
 function closeJSONInput() {
     document.getElementById('json-input-holder').style = 'display:none;';
     playAudio(back);
-    if(!localStorage.getItem("pressedCancel")){
+    if (!localStorage.getItem("pressedCancel")) {
         localStorage.setItem("pressedCancel", true);
-        displayToast('Achivement get!','Nevermind... Cancel a JSON load','bread.png');
+        displayToast('Achivement get!', 'Nevermind... Cancel a JSON load', 'bread.png');
     }
 }
 
@@ -426,6 +432,11 @@ if (linkName != null) {
     //console.log(linkName);
     document.getElementById('command-name').value = linkName;
 }
+let linkCE = params.get('clickEvent');
+if (linkCE != null) {
+    //console.log(linkName);
+    document.getElementById('command-clickEvent').value = linkCE;
+}
 //loadCommandJSON(testJSON)
 
 
@@ -449,8 +460,8 @@ var settingsIcon = document.getElementById('info');
 settingsIcon.addEventListener("click", (event) => {
     playAudio(press);
     window.open("info.html", "Popup", "width=1280,height=768");
-    if(!localStorage.getItem("viewedInfo")){
+    if (!localStorage.getItem("viewedInfo")) {
         localStorage.setItem("viewedInfo", true);
-        displayToast('Achivement get!','Inspector Gadget: Press the info button.','bread.png');
+        displayToast('Achivement get!', 'Inspector Gadget: Press the info button.', 'bread.png');
     }
 });

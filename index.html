@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+        <style>
+            html,
+            body {
+                font-family: 'Alfa Slab One', cursive;
+                text-align: center;
+                margin: 0px;
+                font-size: 1.4em;
+
+            }
+
+            .divider {
+                height: 3px;
+                border-radius: 100%;
+                background-color: black;
+                margin: 10px;
+            }
+
+            .footer{
+                font-size: .6em;
+                margin-top:100px;
+                color:rgb(0, 0, 0);
+            }
+
+            .showcase {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 80%;
+                height: 200px;
+                border-radius: 5px;
+                box-shadow: 12px 12px 30px 10px rgba(0, 0, 0, 0.658);
+                animation: scrollBackground 5s linear infinite;
+            }
+
+            @keyframes scrollBackground {
+                0% {
+                    background-position: 0 0;
+                }
+
+                100% {
+                    background-position: 910px 0;
+                }
+            }
+
+            a {
+                text-decoration: none;
+                letter-spacing: .22cap;
+                font-family: 'Roboto Slab', serif;
+                color: rgb(255, 255, 255);
+                transition-duration: .31s;
+            }
+
+            a:hover {
+                letter-spacing: .3cap;
+            }
+
+            h1 {
+                background: linear-gradient(90deg, rgb(230, 9, 9), rgb(240, 221, 48), rgb(18, 224, 18), rgb(28, 236, 209), rgb(61, 14, 231), rgb(248, 15, 217), rgb(230, 9, 9));
+                background-size: 20000px;
+                background-clip: text;
+                color: #00000000;
+                animation: 20s linear 0s infinite running scroll-bg;
+            }
+
+            @keyframes scroll-bg {
+                from {
+                    background-position-x: 0%;
+                }
+
+                to {
+                    background-position-x:-20000px;
+                }
+            }
+
+            .link {
+                background-color: #23582c;
+                display: block;
+                width: 80%;
+                margin-left: auto;
+                margin-right: auto;
+                transform: skew(-25deg, 0deg);
+                transition-duration: .31s;
+            }
+
+            .link * {
+                transform: skew(25deg, 0deg);
+                display: block;
+            }
+
+            .link:hover {
+                transform: skew(-30deg, 0deg);
+            }
+
+            .link *:hover {
+                transform: skew(30deg, 0deg);
+            }
+
+            .blockcase {
+                background-color: #c77e4f;
+                animation: 10s ease-in-out 0s infinite running blockcase;
+            }
+
+            @keyframes blockcase {
+                5% {
+                    background-color: #c77e4f;
+                }
+
+                28.333% {
+                    background-color: #76B297;
+                }
+
+                38.333% {
+                    background-color: #76B297;
+                }
+
+                61.666% {
+                    background-color: #6A4FC7;
+
+                }
+
+                71.666% {
+                    background-color: #6A4FC7;
+
+                }
+
+                95% {
+                    background-color: #c77e4f;
+                }
+            }
+            
+        </style>
+    </head>
+
+    <body>
+        <h1>hello! this is where i keep my projects :)</h1>
+        <div class="divider"></div>
+        <!-- <a class="showcase" style="background-image:url('assets/blockcase-bg.png')"
+            href="file:///d%3A/Blockcase/blockcase/index.html">
+
+        </a> -->
+        <div class="link blockcase">
+            <a href="https://reddstrider.github.io/blockcase/">Blockcase</a>
+        </div>
+
+
+
+        <p class="footer">made by RedStrider.</p>
+    </body>
+
+</html>
