@@ -18,9 +18,10 @@ var press = new Audio('sounds/press.wav');
 
 
 class PanelData {
-    constructor(p, h, s, t, so, to, saa, taa, saao, taao) {
+    constructor(p, h, s, t, so, to, saa, taa,c, saao, taao) {
         this.start = s;
         this.trail = t;
+        this.commandfunction = c;
         this.startAA = saa;
         this.trailAA = taa;
         this.panel = p;
@@ -72,6 +73,7 @@ class PanelData {
 class Machine {
     constructor(b) {
         this.blocks = b;
+        
     }
     toSingleStack() {
         let singleStackOutput = 'summon falling_block ~ ~1 ~ {BlockState:{Name:"minecraft:activator_rail"},Time:1'
