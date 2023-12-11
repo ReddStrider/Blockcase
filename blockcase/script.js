@@ -428,6 +428,8 @@ let linkJSON = params.get('src');
 let extLinkJSON = params.get('extsrc');
 if (extLinkJSON != null) {
 
+    console.log(extLinkJSON)
+    
     fetch(extLinkJSON)
         .then(response => {
             if (!response.ok) {
@@ -441,7 +443,7 @@ if (extLinkJSON != null) {
         .catch(error => {
             console.error(error);
         });
-        
+
 } else if (linkJSON != null) {
     console.log(linkJSON);
     loadCommandJSON(JSON.parse(linkJSON));
