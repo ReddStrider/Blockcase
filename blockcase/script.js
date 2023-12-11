@@ -18,7 +18,7 @@ var press = new Audio('sounds/press.wav');
 
 
 class PanelData {
-    constructor(p, h, s, t, so, to, saa, taa,c, saao, taao) {
+    constructor(p, h, s, t, so, to, saa, taa, c, saao, taao) {
         this.start = s;
         this.trail = t;
         this.commandfunction = c;
@@ -73,7 +73,7 @@ class PanelData {
 class Machine {
     constructor(b) {
         this.blocks = b;
-        
+
     }
     toSingleStack() {
         let singleStackOutput = 'summon falling_block ~ ~1 ~ {BlockState:{Name:"minecraft:activator_rail"},Time:1'
@@ -269,7 +269,7 @@ function buildMachine(m) {
         //machineOutput += ',Passengers:[{id:"minecraft:command_block_minecart",Command:"say ' + (m.length + 2) + '"'
         machineOutput += ',Passengers:[{id:"minecraft:command_block_minecart",Command:"fill ~' + (m.length) + ' ~-1 ~2 ~-1 ~' + (machineHeight(m)) + ' ~4 minecraft:orange_stained_glass outline"'
         machineOutput += ',Passengers:[{id:"minecraft:command_block_minecart",Command:"fill ~' + (m.length) + ' ~-1 ~2 ~-1 ~-1 ~4 minecraft:white_terracotta"'
-        machineOutput += ',Passengers:[{id:"minecraft:command_block_minecart",Command:"setblock ~ ~ ~1 bamboo_wall_sign{front_text:{has_glowing_text:1b,messages:[\'{\\"text\\":\\"\\"}\',\'{\\"text\\":\\"'+document.getElementById('command-name').value+'\\",\\"color\\":\\"gold\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"'+document.getElementById('command-clickEvent').value+'\\"}}\',\'{\\"text\\":\\"\\"}\',\'{\\"text\\":\\"MW Blockcase\\"}\']}}"'
+        machineOutput += ',Passengers:[{id:"minecraft:command_block_minecart",Command:"setblock ~ ~ ~1 bamboo_wall_sign{front_text:{has_glowing_text:1b,messages:[\'{\\"text\\":\\"\\"}\',\'{\\"text\\":\\"' + document.getElementById('command-name').value + '\\",\\"color\\":\\"gold\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"' + document.getElementById('command-clickEvent').value + '\\"}}\',\'{\\"text\\":\\"\\"}\',\'{\\"text\\":\\"MW Blockcase\\"}\']}}"'
 
 
         //machineOutput += ',Passengers:[{id:"minecraft:command_block_minecart",Command:"fill ~' + (m.length - 3) + ' ~-1 ~2 ~2 ~' + (machineHeight(m)) + ' ~4 minecraft:light_blue_stained_glass outline"'
@@ -425,7 +425,24 @@ addScriptPanel();
 const queryString = window.location.search;
 const params = new URLSearchParams(queryString);
 let linkJSON = params.get('src');
-if (linkJSON != null) {
+let extLinkJSON = params.get('extsrc');
+if (extLinkJSON != null) {
+
+    fetch(extLinkJSON)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('error :cri:');
+            }
+            return response.json();
+        })
+        .then(data => {
+            loadCommandJSON(data);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+        
+} else if (linkJSON != null) {
     console.log(linkJSON);
     loadCommandJSON(JSON.parse(linkJSON));
 }
@@ -467,3 +484,4 @@ settingsIcon.addEventListener("click", (event) => {
         displayToast('Achivement get!', 'Inspector Gadget: Press the info button.', 'bread.png');
     }
 });
+
